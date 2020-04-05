@@ -15,7 +15,7 @@ class RunnableDemo implements Runnable {
     public void run() {
         System.out.println("Running " + threadName);
         try {
-            for (int i = 1; i < 3; i++) {
+            for (int i = 1; i < 251; i++) {
                 OkHttpClient client = new OkHttpClient().newBuilder()
                         .build();
                 MediaType mediaType = MediaType.parse("application/json");
