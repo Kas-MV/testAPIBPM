@@ -10,7 +10,6 @@ class RunnableDemo implements Runnable {
 
     RunnableDemo(String name) {
         threadName = name;
-//        System.out.println("Creating " + threadName);
     }
 
     public void run() {
