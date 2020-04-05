@@ -22,7 +22,7 @@ class RunnableDemo implements Runnable {
                 MediaType mediaType = MediaType.parse("application/json");
                 RequestBody body = RequestBody.create(mediaType, "{\r\n  \"context\": {\r\n    \"__name\": \"postman " + threadName + " " + i + "\"\r\n  }\r\n}");
                 Request request = new Request.Builder()
-                        .url("https://yelgesunw3swu.s-quickbpm.ru/pub/v1/app/workspace/testbpmapi/create")
+                        .url("https://yelgesunw3swu.s-quickbpm.ru/pub/v1/app/workspace/bpmapi/list")
                         .method("POST", body)
                         .addHeader("X-Token", "3152dc2b-390d-4907-a5c9-e5e9e52bf152")
                         .addHeader("Content-Type", "application/json")
