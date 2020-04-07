@@ -15,11 +15,11 @@ class RunnableDemo implements Runnable {
     public void run() {
         System.out.println("Running " + threadName);
         try {
-            for (int i = 1; i < 251; i++) {
+            for (int i = 1; i < 2; i++) {
                 OkHttpClient client = new OkHttpClient().newBuilder()
                         .build();
                 MediaType mediaType = MediaType.parse("application/json");
-                RequestBody body = RequestBody.create(mediaType, "{\r\n  \"context\": {\r\n    \"__name\": \"java " + threadName + " " + i + "\"\r\n  }\r\n}");
+                RequestBody body = RequestBody.create(mediaType, "{\r\n  \"context\": {\r\n    \"__name\": \"test " + threadName + " " + i + "\"\r\n  }\r\n}");
                 Request request = new Request.Builder()
                         .url("https://yelgesunw3swu.s-quickbpm.ru/pub/v1/app/workspace/bpmapitest/create")
                         .method("POST", body)
@@ -34,10 +34,17 @@ class RunnableDemo implements Runnable {
             }
         } catch (InterruptedException e) {
             System.out.println("Thread " + threadName + " interrupted.");
+
         } catch (IOException e) {
             e.printStackTrace();
+
         }
-        System.out.println("Thread " + threadName + " exiting.");
+
+        finally {
+            System.out.println("Thread " + threadName + " exiting.");
+            stop();
+        }
+
     }
 
     public void start() {
@@ -46,5 +53,9 @@ class RunnableDemo implements Runnable {
             t = new Thread(this, threadName);
             t.start();
         }
+    }
+
+    public void stop(){
+        t.stop();
     }
 }
